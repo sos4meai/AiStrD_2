@@ -229,12 +229,12 @@ size_t List::find_first(List* for_search)
 
 void List::input_list()
 {
-	cout << "Количество элементов списка: ";
+	cout << "Number of elements: ";
 	size_t number_of_elem;
 	cin >> number_of_elem;
 	while (number_of_elem > 0)
 	{
-		cout << "Введите элемент: ";
+		cout << "Input data: ";
 		int data;
 		cin >> data;
 		List::push_back(data);
