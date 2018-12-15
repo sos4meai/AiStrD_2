@@ -10,8 +10,8 @@ int main()
 	system("cls");
 	listA.print_to_console(); listB.print_to_console();
 	size_t result = listA.find_first(&listB);
-	if (result!=listA.get_size()) std::cout << "Ïåðâîå âõîæäåíèå: " << result << '\n';
-	else std::cout << "Íå âõîäèò\n";
+	if (result!=listA.get_size()) std::cout << "ÐŸÐµÑ€Ð²Ð¾Ðµ Ð²Ñ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ðµ: " << result << '\n';
+	else std::cout << "ÐÐµ Ð²Ñ…Ð¾Ð´Ð¸Ñ‚\n";
 	listA.clear(); listB.clear();
 	system("pause");
 	return 0;
