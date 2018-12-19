@@ -9,103 +9,116 @@ namespace Tests
 	TEST_CLASS(UnitTest1)
 	{
 	public:
-		// при создании списка его размер равен 0 + работа size_equal
+		
 		TEST_METHOD(list_creates_with_size_0)
 		{
 			List list;
 			Assert::IsTrue(list.size_equal(0));
+			List.~List();
 		}
-		// работа isEmpty
+		
 		TEST_METHOD(creating_list_is_empty)
 		{
 			List list;
 			Assert::IsTrue(list.isEmpty());
+			List.~List();
 		}
 		// push_back
-		TEST_METHOD(push_back_empty_list) // добавляет элемент в пустой лист
+		TEST_METHOD(push_back_empty_list) 
 		{
 			List list;
 			list.push_back(5);
 			Assert::IsFalse(list.isEmpty());
+			List.~List();
 		}
 
-		TEST_METHOD(increase_size_push_back) //размер увеличивается
+		TEST_METHOD(increase_size_push_back) 
 		{
 			List list;
 			list.push_back(5);
 			Assert::IsTrue(list.size_equal(1));
+			List.~List();
 		}
 
-		TEST_METHOD(correct_data_push_back) // верное значение + работа equal_tail
+		TEST_METHOD(correct_data_push_back) 
 		{
 			List list;
 			list.push_back(5);
 			Assert::IsTrue(list.tail_equal(5));
+			List.~List();
 		}
 
-		TEST_METHOD(push_back_add_in_tail)//добавляет таки в конец
+		TEST_METHOD(push_back_add_in_tail)
 		{
 			List list;
 			for (int i = 0; i < 6; i++)
 				list.push_back(i);
 			Assert::IsTrue(list.tail_equal(5));
+			List.~List();
 		}
 		//push front
-		TEST_METHOD(empty_list_push_front) //лист становится не пуст
+		TEST_METHOD(empty_list_push_front) 
 		{
 			List list;
 			list.push_front(1);
 			Assert::IsFalse(list.isEmpty());
+			List.~List();
 		}
 
-		TEST_METHOD(increase_size_push_front) //размер увеличивается
+		TEST_METHOD(increase_size_push_front) 
 		{
 			List list;
 			list.push_front(1);
 			Assert::IsTrue(list.size_equal(1));
+			List.~List();
 		}
 
-		TEST_METHOD(correct_data_push_front) //добавляется нужный элемент
+		TEST_METHOD(correct_data_push_front) 
 		{
 			List list;
 			list.push_front(0);
 			Assert::IsTrue(list.tail_equal(0));
+			List.~List();
 		}
 
-		TEST_METHOD(change_head_push_front) // элемент добавляется в начало
+		TEST_METHOD(change_head_push_front) 
 		{
 			List list;
 			for (int i = 0; i <= 5; i++)
 				list.push_front(i);
 			Assert::IsTrue(list.head_equal(5));
+			List.~List();
 		}
 		//pop back
-		TEST_METHOD(pop_back_list_with_one_elem)//удаляет единственный элемент
+		TEST_METHOD(pop_back_list_with_one_elem)
 		{
 			List list;
 			list.push_back(1);
 			list.pop_back();
 			Assert::IsTrue(list.isEmpty());
+			List.~List();
 		}
 
-		TEST_METHOD(pop_back_delete_last_elem) //удаляет последний элемент
+		TEST_METHOD(pop_back_delete_last_elem) 
 		{
 			List list;
 			for (int i = 0; i < 6; i++)
 				list.push_back(i);
 			list.pop_back();
 			Assert::IsTrue(list.tail_equal(4));
+			List.~List();
 		}
 
-		TEST_METHOD(pop_back_decrease_size) //уменьшает размер
+		TEST_METHOD(pop_back_decrease_size) 
 		{
 			List list;
 			list.push_back(1);
 			list.pop_back();
 			Assert::IsTrue(list.size_equal(0));
-		 }
+			List.~List();
+		}
 
-		TEST_METHOD(pop_back_empty_list_exception)//исключение
+		TEST_METHOD(pop_back_empty_list_exception)
 		{
 			List list; 
 			try
@@ -116,34 +129,38 @@ namespace Tests
 			{
 				Assert::AreEqual(0, error);
 			}
+			List.~List();
 		}
 		//pop front
-		TEST_METHOD(pop_front_list_with_one_elem)//удаляет единственный элемент
+		TEST_METHOD(pop_front_list_with_one_elem)
 		{
 			List list;
 			list.push_back(1);
 			list.pop_front();
 			Assert::IsTrue(list.isEmpty());
+			List.~List();
 		}
 
-		TEST_METHOD(pop_front_delete_last_elem) //удаляет первый элемент
+		TEST_METHOD(pop_front_delete_last_elem) 
 		{
 			List list;
 			for (int i = 0; i < 6; i++)
 				list.push_back(i);
 			list.pop_front();
 			Assert::IsTrue(list.head_equal(1));
+			List.~List();
 		}
 
-		TEST_METHOD(pop_front_decrease_size) //уменьшает размер
+		TEST_METHOD(pop_front_decrease_size) 
 		{
 			List list;
 			list.push_back(1);
 			list.pop_front();
 			Assert::IsTrue(list.size_equal(0));
+			List.~List();
 		}
 
-		TEST_METHOD(pop_front_empty_list_exception) //исключение: пустой список
+		TEST_METHOD(pop_front_empty_list_exception) 
 		{
 			List list;
 			try
@@ -154,34 +171,38 @@ namespace Tests
 			{
 				Assert::AreEqual(0, error);
 			}
+			List.~List();
 		}
 		//insert
-		TEST_METHOD(insert_index_0_add_head_empty_list) //индекс 0 - добавляется голова 
+		TEST_METHOD(insert_index_0_add_head_empty_list) 
 		{
 			List list;
 			list.insert(2, 0);
 			Assert::IsFalse(list.isEmpty());
+			List.~List();
 		}
 
-		TEST_METHOD(insert_index_size_add_tail) // индекс = размер - добавляется конец
+		TEST_METHOD(insert_index_size_add_tail) 
 		{
 			List list;
 			for (int i = 1; i < 6; i++)
 				list.push_back(i);
 			list.insert(6, list.get_size());
 			Assert::IsTrue(list.tail_equal(6));
+			List.~List();
 		}
 		
-		TEST_METHOD(insert_increase_size) // увеличивает размер списка
+		TEST_METHOD(insert_increase_size) 
 		{
 			List list;
 			list.push_back(1);
 			list.push_back(3);
 			list.insert(2, 1);
 			Assert::IsTrue(list.size_equal(3));
+			List.~List();
 		}
 
-		TEST_METHOD(insert_index_greater_than_size) //исключение: индекс больше размера
+		TEST_METHOD(insert_index_greater_than_size) 
 		{
 			List list;
 			list.push_back(1);
@@ -194,6 +215,7 @@ namespace Tests
 			{
 				Assert::AreEqual(1, error);
 			}
+			List.~List();
 		}
 		//at
 		TEST_METHOD(at_is_correct_index_0)
@@ -202,6 +224,7 @@ namespace Tests
 			list.push_back(1);
 			list.push_back(3);
 			Assert::AreEqual(1, list.at(0));
+			List.~List();
 		}
 
 		TEST_METHOD(at_is_correct_index_size)
@@ -211,6 +234,7 @@ namespace Tests
 			list.push_back(2);
 			list.push_back(3);
 			Assert::AreEqual(3, list.at(list.get_size()-1));
+			List.~List();
 		}
 
 		TEST_METHOD(at_is_correct_middle)
@@ -220,6 +244,7 @@ namespace Tests
 			list.push_back(2); //1
 			list.push_back(3); //2
 			Assert::AreEqual(2, list.at(1));
+			List.~List();
 		}
 
 		TEST_METHOD(insert_add_middle)
@@ -227,8 +252,9 @@ namespace Tests
 			List list;
 			list.push_back(1);//0
 			list.push_back(3);//1
-			list.insert(2, 1);// сдвинет 3
+			list.insert(2, 1);
 			Assert::AreEqual(2, list.at(1));
+			List.~List();
 		}
 
 		TEST_METHOD(at_index_greater_than_size)
@@ -245,6 +271,7 @@ namespace Tests
 			{
 				Assert::AreEqual(1, error);
 			}
+			List.~List();
 		}
 		//remove
 		TEST_METHOD(remove_delete_first)
@@ -255,6 +282,7 @@ namespace Tests
 			list.push_back(3); //2
 			list.remove(0);
 			Assert::IsTrue(list.head_equal(2));
+			List.~List();
 		}
 
 		TEST_METHOD(remove_delete_last)
@@ -265,6 +293,7 @@ namespace Tests
 			list.push_back(3); //2
 			list.remove(2);
 			Assert::IsTrue(list.tail_equal(2));
+			List.~List();
 		}
 
 		TEST_METHOD(remove_middle)
@@ -278,6 +307,7 @@ namespace Tests
 			list.push_back(6); //5
 			list.remove(3);
 			Assert::AreEqual(5, list.at(3));
+			List.~List();
 		}
 
 		TEST_METHOD(remove_position_greater_than_size)
@@ -294,6 +324,7 @@ namespace Tests
 			{
 				Assert::AreEqual(1, error);
 			}
+			List.~List();
 		}
 
 		TEST_METHOD(remove_decrease_size)
@@ -304,6 +335,7 @@ namespace Tests
 			list.push_back(3); //2
 			list.remove(1);
 			Assert::IsTrue(list.size_equal(2));
+			List.~List();
 		}
 		//clear
 		TEST_METHOD(clear_make_list_empty)
@@ -314,6 +346,7 @@ namespace Tests
 			list.push_back(3); //2
 			list.clear();
 			Assert::IsTrue(list.isEmpty());
+			List.~List();
 		}
 		TEST_METHOD(clear_size_equals_0)
 		{
@@ -323,6 +356,7 @@ namespace Tests
 			list.push_back(3); //2
 			list.clear();
 			Assert::IsTrue(list.size_equal(0));
+			List.~List();
 		}
 		//set
 		TEST_METHOD(set_change_first)
@@ -335,6 +369,7 @@ namespace Tests
 			list.push_back(5); //4
 			list.set(0, 99);
 			Assert::IsTrue(list.head_equal(99));
+			List.~List();
 		}
 
 		TEST_METHOD(set_change_last)
@@ -347,6 +382,7 @@ namespace Tests
 			list.push_back(5); //4
 			list.set(4, 99);
 			Assert::IsTrue(list.tail_equal(99));
+			List.~List();
 		}
 
 		TEST_METHOD(set_change_middle)
@@ -359,6 +395,7 @@ namespace Tests
 			list.push_back(5); //4
 			list.set(2, 99);
 			Assert::AreEqual(99, list.at(2));
+			List.~List();
 		}
 		//find first
 		TEST_METHOD(find_first_not_included)
@@ -377,7 +414,7 @@ namespace Tests
 			listA.~List(); listB.~List();
 		}
 
-		TEST_METHOD(find_first_included_from_0)//с первого элемента работает
+		TEST_METHOD(find_first_included_from_0)//Г± ГЇГҐГ°ГўГ®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г°Г ГЎГ®ГІГ ГҐГІ
 		{
 			List listA;
 			listA.push_back(1); //0
@@ -393,7 +430,7 @@ namespace Tests
 			listA.~List(); listB.~List();
 		}
 		
-		TEST_METHOD(find_first_first_entrance)//выдает именно первое вхождение
+		TEST_METHOD(find_first_first_entrance)//ГўГ»Г¤Г ГҐГІ ГЁГ¬ГҐГ­Г­Г® ГЇГҐГ°ГўГ®ГҐ ГўГµГ®Г¦Г¤ГҐГ­ГЁГҐ
 		{
 			List listA;
 			listA.push_back(1); //0
@@ -408,7 +445,7 @@ namespace Tests
 			listA.~List(); listB.~List();
 		}
 
-		TEST_METHOD(find_first_half_included_full_included)//сначала входит частично, потом целиком
+		TEST_METHOD(find_first_half_included_full_included)//Г±Г­Г Г·Г Г«Г  ГўГµГ®Г¤ГЁГІ Г·Г Г±ГІГЁГ·Г­Г®, ГЇГ®ГІГ®Г¬ Г¶ГҐГ«ГЁГЄГ®Г¬
 		{
 			List listA;
 			listA.push_back(1); //0
@@ -424,7 +461,7 @@ namespace Tests
 			listA.~List(); listB.~List();
 		}
 
-		TEST_METHOD(find_first_half_included)//входит частично
+		TEST_METHOD(find_first_half_included)//ГўГµГ®Г¤ГЁГІ Г·Г Г±ГІГЁГ·Г­Г®
 		{
 			List listA;
 			listA.push_back(1); //0
@@ -440,7 +477,7 @@ namespace Tests
 			listA.~List(); listB.~List();
 		}
 
-		TEST_METHOD(find_first_second_array_is_empty) //список В пуст
+		TEST_METHOD(find_first_second_array_is_empty) //Г±ГЇГЁГ±Г®ГЄ Г‚ ГЇГіГ±ГІ
 		{
 			List listA;
 			listA.push_back(1); //0
@@ -453,7 +490,7 @@ namespace Tests
 			listA.~List(); listB.~List();
 		}
 
-		TEST_METHOD(find_first_first_array_is_empty) //первый список пуст
+		TEST_METHOD(find_first_first_array_is_empty) //ГЇГҐГ°ГўГ»Г© Г±ГЇГЁГ±Г®ГЄ ГЇГіГ±ГІ
 		{
 			List listA;
 			listA.push_back(1); //0
@@ -466,7 +503,7 @@ namespace Tests
 			listA.~List(); listB.~List();
 		}
 
-		TEST_METHOD(find_first_both_empty) //оба пусты
+		TEST_METHOD(find_first_both_empty) //Г®ГЎГ  ГЇГіГ±ГІГ»
 		{
 			List listA;
 			List listB;
