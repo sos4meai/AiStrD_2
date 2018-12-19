@@ -206,19 +206,30 @@ size_t List::find_first(List* for_search)
 {
 	size_t count = 0;
 	Element* p = head, *q = for_search->head;
-	while ((p != nullptr) && (q != nullptr)) {
+	while ((p != nullptr) && (q != nullptr) && (size-count>=for_search->size)) {
 		if (p->data == q->data)
 			q = q->next;
 		else
 		{
-			q = for_search->head;
-			count++;
-			p = head; size_t i = count - 1;
-			while (i != 0)
+			
+			if (q != for_search->head)
 			{
-				p = p->next;
-				i--;
+				q = for_search->head;
+				count++;
+				p = head; size_t i = count - 1;
+				while (i != 0)
+				{
+					p = p->next;
+					i--;
+				}
 			}
+			else
+			{
+				q = for_search->head;
+				count++;
+			}
+
+
 		}
 		p = p->next;
 	}
